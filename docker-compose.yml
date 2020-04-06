@@ -17,7 +17,7 @@ services:
       - "443:443"
   php-fpm:
     image: registry.cn-hangzhou.aliyuncs.com/tiredoy/php-7.3:2.1
-    container_name: php_service
+    container_name: "php_service"
     links:
       - mysql
       - redis
@@ -44,7 +44,7 @@ services:
       - "/var/log/mysql:/var/log/mysql"
   redis:
     image: daocloud.io/library/redis:5.0
-    container_name: "redis-service"
+    container_name: "redis_service"
     volumes:
       - "./configs/redis/redis.conf:/usr/local/redis.conf"
       - "./db_data/redis/:/usr/local/redis/data/"
