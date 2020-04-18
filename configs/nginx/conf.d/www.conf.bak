@@ -1,9 +1,9 @@
 server {
 	listen 80;
 
-	server_name test2.com;
+	server_name dianbo_admin.com;
 
-	root /var/www/php/test2;
+	root /var/www/dianbo_yunying/public;
 
 	index index.html index.htm index.php;
 
@@ -12,9 +12,18 @@ server {
 	location / {
 		try_files $uri $uri/ /index.php?$query_string;
 	}
-	
+
+	location /admin/ {
+        try_files $uri $uri/ /admin/index.html;
+    }
+
+    # yarn dev 或者 yarn watch 之后的路径
+    location /admin-dev/ {
+        try_files $uri $uri/ /admin-dev/index.html;
+    }
+
 	location ~ \.php$ {
-		root /var/www/php/test2;
+		root /var/www/dianbo_yunying/public;
 		fastcgi_pass php-fpm:9000;
 		fastcgi_index index.php;
 		include fastcgi_params;

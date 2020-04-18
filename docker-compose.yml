@@ -10,8 +10,8 @@ services:
       - php-fpm
     volumes:
       - "./configs/nginx/conf.d:/etc/nginx/conf.d"
-      - "/var/log/nginx:/var/log/nginx"
-      - "/var/www:/var/www"
+      - "./log/nginx:/var/log/nginx"
+      - "./www:/var/www"
     ports:
       - "80:80"
       - "443:443"
@@ -26,8 +26,8 @@ services:
     restart: always
     volumes:
       - "./configs/php/php.ini:/usr/local/etc/php/php.ini"
-      - "/var/www:/var/www"
-      - "/var/log/php:/var/log"
+      - "./www:/var/www"
+      - "./log/php:/var/log"
   mysql:
     image: daocloud.io/library/mysql:5.7
     container_name: "mysql_service"
@@ -41,7 +41,7 @@ services:
     volumes:
       - "./configs/mysql:/etc/mysql"
       - "./db_data/mysql:/var/lib/mysql"
-      - "/var/log/mysql:/var/log/mysql"
+      - "./log/mysql:/var/log/mysql"
   redis:
     image: daocloud.io/library/redis:5.0
     container_name: "redis_service"
