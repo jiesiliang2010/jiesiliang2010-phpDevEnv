@@ -37,3 +37,4 @@ log-error	= /var/log/mysql/error.log
 symbolic-links=0
 log-bin = /var/lib/mysql/bin/mysql-bin.log
 server-id=1
+explicit_defaults_for_timestamp=true
